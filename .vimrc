@@ -1,4 +1,5 @@
 set nocompatible
+
 filetype on
 
 set rtp+=~/.vim/bundle/vundle/
@@ -24,9 +25,11 @@ set tabstop=4
 
 set wrap
 
-set cursorline
+set backspace=indent,eol,start
 
-set cursorcolumn
+"set cursorline
+
+"set cursorcolumn
 
 set encoding=utf-8
 
@@ -43,12 +46,12 @@ au FileType cpp set cindent shiftwidth=4 " esc mapping
 inoremap jk <ESC>
 
 " CAOSLOCK mapping ctrl
-inoremap CAPSLOCK <C>
-
+"inoremap CAPSLOCK <C>
+" shift $ mapping ctrl 0
 " leader key
 let mapleader = "\<Space>"
 
-
+inoremap <C><CR> jko
 
 " END
 " vp doesn't replace paste buffer
@@ -61,4 +64,9 @@ function! s:Repl()
   return "p@=RestoreRegister()<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+nnoremap <Leader>zz :wq<CR>
 nnoremap <Leader>w :w<CR>
+"auto clode scratch preview
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
