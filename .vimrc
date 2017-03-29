@@ -5,6 +5,8 @@ filetype on
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+filetype plugin on
+
 Bundle 'gmarik/vundle'
 
 Bundle 'davidhalter/jedi'
@@ -12,6 +14,8 @@ Bundle 'davidhalter/jedi'
 Bundle 'Valloric/YouCompleteMe'
 
 Bundle 'jiangmiao/auto-pairs'
+
+Bundle 'scrooloose/nerdcommenter'
 
 set autoindent
 
