@@ -27,7 +27,7 @@ set hlsearch
 
 set tabstop=4
 
-set wrap
+set wrap!
 
 set backspace=indent,eol,start
 
@@ -55,7 +55,9 @@ inoremap jk <ESC>
 " leader key
 let mapleader = "\<Space>"
 
-inoremap <C><CR> jko
+"imap <C><CR> jko
+imap xz <ESC>o
+imap zx <Up><ESC>o
 
 " END
 " vp doesn't replace paste buffer
