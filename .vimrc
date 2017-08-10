@@ -47,6 +47,11 @@ au FileType python set cindent shiftwidth=4
 
 
 au FileType cpp set cindent shiftwidth=4 " esc mapping
+
+set relativenumber
+
+set ruler
+
 inoremap jk <ESC>
 
 " CAOSLOCK mapping ctrl
@@ -62,12 +67,12 @@ imap zx <Up><ESC>o
 " END
 " vp doesn't replace paste buffer
 function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
+		let @" = s:restore_reg
+		return ''
 endfunction
 function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()<cr>"
+		let s:restore_reg = @"
+		return "p@=RestoreRegister()<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
@@ -94,6 +99,6 @@ let g:ycm_complete_in_strings = 1                           " 在字符串输入
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 " 注释和字符串中的文字也会被收入补全
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_show_diagnostics_ui = 0                           " 禁用语法检查
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |          " 回车即选中当前项
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |          " 回车即选中当前项
 nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|     " 跳转到定义处
 "let g:ycm_min_num_of_chars_for_completion=2                 " 从第2个键入字符就开始罗列匹配项"
