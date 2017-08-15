@@ -52,7 +52,7 @@ set relativenumber
 
 set ruler
 
-inoremap jk <ESC>
+inoremap jk <ESC>l
 
 " CAOSLOCK mapping ctrl
 "inoremap CAPSLOCK <C>
