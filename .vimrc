@@ -64,6 +64,8 @@ let mapleader = "\<Space>"
 imap xz <ESC>o
 imap zx <Up><ESC>o
 
+map <CR> <S-v>
+
 " END
 " vp doesn't replace paste buffer
 function! RestoreRegister()
