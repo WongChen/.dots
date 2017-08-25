@@ -53,7 +53,10 @@ set relativenumber
 set ruler
 
 inoremap jk <ESC>l
-
+inoremap <C-a> <backspace>
+inoremap <C-d> <Right><backspace>
+map <S-e> $
+map <C-a> ^
 " CAOSLOCK mapping ctrl
 "inoremap CAPSLOCK <C>
 " shift $ mapping ctrl 0
@@ -83,8 +86,6 @@ nnoremap <Leader>w :w<CR>
 "auto clode scratch preview
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-
-
 
 " YouCompleteMe
 set runtimepath+=~/.vim/bundle/YouCompleteMe
