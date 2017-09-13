@@ -107,3 +107,11 @@ let g:ycm_show_diagnostics_ui = 0                           " 禁用语法检查
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |          " 回车即选中当前项
 nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|     " 跳转到定义处
 "let g:ycm_min_num_of_chars_for_completion=2                 " 从第2个键入字符就开始罗列匹配项"
+
+
+" auto-pair
+let g:AutoPairsShortcutToggle = '<C-p>'
+"let g:AutoPairsFlyMode = 0
+
+
+" markdown
