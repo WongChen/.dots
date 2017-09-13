@@ -17,6 +17,8 @@ Bundle 'jiangmiao/auto-pairs'
 
 Bundle 'scrooloose/nerdcommenter'
 
+Bundle 'Vimjas/vim-python-pep8-indent'
+
 set autoindent
 
 set smartindent
