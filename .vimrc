@@ -19,6 +19,14 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'Vimjas/vim-python-pep8-indent'
 
+Bundle 'lervag/vimtex'
+
+" vimtex
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+set iskeyword+=:
+autocmd BufEnter *.tex set sw=2
+
 set autoindent
 
 set smartindent
