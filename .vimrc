@@ -23,6 +23,8 @@ Bundle 'Vimjas/vim-python-pep8-indent'
 Bundle 'lervag/vimtex'
 
 Bundle 'junegunn/vader.vim'
+
+Bundle 'flazz/vim-colorschemes'
 " vimtex
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
