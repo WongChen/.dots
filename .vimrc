@@ -91,7 +91,7 @@ nnoremap <Leader>zz :wq<CR>
 
 nnoremap <Leader>w :w<CR>
 
-nnoremap <Leader>pp :!python %
+nnoremap <Leader>pp :!python %<CR>
 
 " useful function
 function! RestoreRegister()
