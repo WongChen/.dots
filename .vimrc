@@ -9,6 +9,8 @@ filetype plugin indent on
 
 set autoindent
 
+set wrap
+
 set smartindent
 
 set nu!
@@ -16,8 +18,6 @@ set nu!
 set hlsearch
 
 set tabstop=4
-
-set wrap!
 
 set backspace=indent,eol,start
 
@@ -59,6 +59,8 @@ Bundle 'junegunn/vader.vim'
 
 Bundle 'flazz/vim-colorschemes'
 
+Bundle 'tpope/vim-surround'
+
 " vimtex
 set grepprg=grep\ -nH\ $*
 
@@ -92,6 +94,12 @@ nnoremap <Leader>zz :wq<CR>
 nnoremap <Leader>w :w<CR>
 
 nnoremap <Leader>pp :!python %<CR>
+
+" buffer switch
+nnoremap <silent> [b :bprevious<CR> 
+nnoremap <silent> ]b :bnext<CR> 
+nnoremap <silent> [B :bfirst<CR> 
+nnoremap <silent> ]B :blast<CR>
 
 " useful function
 function! RestoreRegister()
