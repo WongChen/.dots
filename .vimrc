@@ -101,6 +101,10 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR> 
 nnoremap <silent> ]B :blast<CR>
 
+" tab switch
+nnoremap [t :tabp<CR>
+nnoremap ]t :tabn<CR>
+
 " useful function
 function! RestoreRegister()
 		let @" = s:restore_reg
