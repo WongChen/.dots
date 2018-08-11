@@ -7,6 +7,16 @@ filetype plugin on
 
 filetype plugin indent on
 
+set hidden
+
+" -------{{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" -------}}}
+setlocal foldmethod=marker
+
 set autoindent
 
 set wrap
@@ -85,7 +95,7 @@ imap xz <ESC>o
 
 imap zx <Up><ESC>o
 
-map <CR> <S-v>
+"map <CR> <S-v>
 
 vmap <silent> <expr> p <sid>Repl()
 
