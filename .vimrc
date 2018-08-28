@@ -14,6 +14,13 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
+
+
+augroup NrHighlight
+  autocmd!
+  autocmd WinEnter * hi LineNr ctermfg=247 guifg=#9e9e9e ctermbg=233 guibg=#121212
+  autocmd WinLeave * hi LineNr ctermfg=274 guifg=#e9e9e9 ctermbg=133 guibg=#212121
+augroup END
 " -------}}}
 setlocal foldmethod=marker
 
@@ -32,6 +39,8 @@ set tabstop=4
 set backspace=indent,eol,start
 
 set encoding=utf-8
+
+set showbreak=∫
 
 syntax enable
 
