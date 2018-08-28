@@ -124,6 +124,10 @@ nnoremap <silent> ]B :blast<CR>
 nnoremap [t :tabp<CR>
 nnoremap ]t :tabn<CR>
 
+" screen switch
+nnoremap <silent> [p <C-t>p
+nnoremap <silent> ]p <C-t>n
+
 " useful function
 function! RestoreRegister()
 		let @" = s:restore_reg
