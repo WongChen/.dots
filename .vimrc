@@ -56,6 +56,13 @@ set relativenumber
 
 set ruler
 
+" colorscheme
+"if has("gui_running")
+	"set background=light
+"else
+	"set background=dark
+"endif
+
 " bundle, vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -79,6 +86,23 @@ Bundle 'junegunn/vader.vim'
 Bundle 'flazz/vim-colorschemes'
 
 Bundle 'tpope/vim-surround'
+
+
+" haskell monica
+Plugin 'w0rp/ale'
+Plugin 'vim-airline/vim-airline'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'Shougo/vimproc'
+
+let g:airline#extensions#ale#enabled = 1
+
+nnoremap <Leader>ht :GhcModType<cr>
+nnoremap <Leader>htc :GhcModTypeClear<cr>
+autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
+
+
+"Bundle 'neovimhaskell/haskell-vim'
+
 
 " vimtex
 set grepprg=grep\ -nH\ $*
@@ -161,12 +185,13 @@ nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
 
 " auto-pair
 let g:AutoPairsShortcutToggle = '<C-p>'
+let b:autopairs_enabled=0
 
 " haskell
-let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
+"let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
+"let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
+"let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
+"let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
+"let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
+"let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
+"let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
