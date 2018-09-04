@@ -42,6 +42,8 @@ set encoding=utf-8
 
 set showbreak=∫
 
+set dict+=/usr/share/dict/words
+
 syntax enable
 
 filetype indent on
@@ -184,7 +186,7 @@ nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
 
 
 " auto-pair
-let g:AutoPairsShortcutToggle = '<C-p>'
+let g:AutoPairsShortcutToggle = '<C-u>'
 let b:autopairs_enabled=0
 
 " haskell
