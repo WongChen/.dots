@@ -58,6 +58,10 @@ set relativenumber
 
 set ruler
 
+" search highlight colorschemes
+set hlsearch
+hi Search ctermbg=LightYellow
+hi Search ctermfg=Red
 " colorscheme
 "if has("gui_running")
 	"set background=light
