@@ -111,7 +111,7 @@ nnoremap <Leader>hd <C-w>h<C-d><C-w>l
 nnoremap <Leader>ld <C-w>l<C-d><C-w>h
 nnoremap <Leader>jd <C-w>j<C-d><C-w>k
 nnoremap <Leader>kd <C-w>k<C-d><C-w>j
-                                  w  
+                                    
 nnoremap <Leader>hb <C-w>h<C-d><C-w>l
 nnoremap <Leader>lb <C-w>l<C-d><C-w>h
 nnoremap <Leader>jb <C-w>j<C-d><C-w>k
