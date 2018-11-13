@@ -22,7 +22,7 @@ augroup NrHighlight
   autocmd WinLeave * hi LineNr ctermfg=274 guifg=#e9e9e9 ctermbg=133 guibg=#212121
 augroup END
 " -------}}}
-setlocal foldmethod=marker"{{{
+setlocal foldmethod=marker "{{{
 
 set autoindent
 
@@ -70,7 +70,7 @@ hi Search ctermfg=Red"}}}
 "endif
 
 " bundle, vundle
-set rtp+=~/.vim/bundle/vundle/"{{{
+set rtp+=~/.vim/bundle/vundle/ 
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -91,7 +91,7 @@ Bundle 'junegunn/vader.vim'
 
 Bundle 'flazz/vim-colorschemes'
 
-Bundle 'tpope/vim-surround'"}}}
+Bundle 'tpope/vim-surround'
 
 
 " haskell monica
@@ -107,15 +107,15 @@ nnoremap <Leader>htc :GhcModTypeClear<cr>
 autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
 
 " key mapping for windows scroll
-nnoremap <Leader>hd <C-h><C-d><C-l>
-nnoremap <Leader>ld <C-l><C-d><C-h>
-nnoremap <Leader>jd <C-j><C-d><C-k>
-nnoremap <Leader>kd <C-k><C-d><C-j>
-
-nnoremap <Leader>hb <C-h><C-d><C-l>
-nnoremap <Leader>lb <C-l><C-d><C-h>
-nnoremap <Leader>jb <C-j><C-d><C-k>
-nnoremap <Leader>kb <C-k><C-d><C-j>
+nnoremap <Leader>hd <C-w>h<C-d><C-w>l
+nnoremap <Leader>ld <C-w>l<C-d><C-w>h
+nnoremap <Leader>jd <C-w>j<C-d><C-w>k
+nnoremap <Leader>kd <C-w>k<C-d><C-w>j
+                                  w  
+nnoremap <Leader>hb <C-w>h<C-d><C-w>l
+nnoremap <Leader>lb <C-w>l<C-d><C-w>h
+nnoremap <Leader>jb <C-w>j<C-d><C-w>k
+nnoremap <Leader>kb <C-w>k<C-d><C-w>j
 
 "Bundle 'neovimhaskell/haskell-vim'
 
