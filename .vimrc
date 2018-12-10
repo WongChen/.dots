@@ -132,6 +132,7 @@ autocmd BufEnter *.tex set sw=2
 " key map
 inoremap jk <ESC>l
 
+
 inoremap <C-a> <backspace>
 
 inoremap <C-d> <Right><backspace>
@@ -148,11 +149,14 @@ imap zx <Up><ESC>o
 
 vmap <silent> <expr> p <sid>Repl()
 
+" close buffer mapping
+nnoremap <Leader>bb :bd<CR>
+
 nnoremap <Leader>zz :wq<CR>
 
 nnoremap <Leader>w :w<CR>
 
-nnoremap <Leader>pp :!python %<CR>
+nnoremap <Leader>pp :!python3 %<CR>
 
 " buffer switch
 nnoremap <silent> [b :bprevious<CR> 
