@@ -117,7 +117,9 @@ nnoremap <Leader>lb <C-w>l<C-d><C-w>h
 nnoremap <Leader>jb <C-w>j<C-d><C-w>k
 nnoremap <Leader>kb <C-w>k<C-d><C-w>j
 
-"Bundle 'neovimhaskell/haskell-vim'
+" key mapping for ale
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
 
 
 " vimtex
