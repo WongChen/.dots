@@ -121,6 +121,18 @@ nnoremap <Leader>kb <C-w>k<C-d><C-w>j
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+  \   'csh': ['shell'],
+  \   'zsh': ['shell'],
+  \   'go': ['gofmt', 'golint'],
+  \   'python': ['flake8', 'mypy', 'pylint'],
+  \   'c': ['gcc', 'cppcheck'],
+  \   'cpp': ['gcc', 'cppcheck'],
+  \   'text': [],
+  \}
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
+
 
 " vimtex
 set grepprg=grep\ -nH\ $*
