@@ -40,9 +40,9 @@ set backspace=indent,eol,start
 
 set encoding=utf-8
 
-set showbreak=∫
+set showbreak=∫  " wrap corner display
 
-set dict+=/usr/share/dict/words
+set dict+=/usr/share/dict/words " dictionary
 
 syntax enable
 
@@ -50,9 +50,13 @@ filetype indent on
 
 syntax on
 
-au FileType python set cindent shiftwidth=4
+au FileType python set cindent shiftwidth=4 " auto command for python
 
 au FileType cpp set cindent shiftwidth=4 " esc mapping
+
+au FileType python compiler pyunit
+au FileType python set makeprg=python3\ %
+
 
 set relativenumber
 
@@ -69,8 +73,16 @@ hi Search ctermfg=Red"}}}
 	"set background=dark
 "endif
 
+" file browsing
+set path+=**
+
+" display all matching files when we tab
+set wildmenu
+
+
+
 " bundle, vundle
-set rtp+=~/.vim/bundle/vundle/ 
+set rtp+=~/.vim/bundle/vundle/ " rtp => runtimepath
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
@@ -78,8 +90,6 @@ Bundle 'gmarik/vundle'
 Bundle 'davidhalter/jedi'
 
 Bundle 'Valloric/YouCompleteMe'
-
-Bundle 'jiangmiao/auto-pairs'
 
 Bundle 'scrooloose/nerdcommenter'
 
@@ -94,7 +104,7 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'tpope/vim-surround'
 
 
-" haskell monica
+" haskell monica:   --> doesn't work somehow.
 Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'eagletmt/ghcmod-vim'
@@ -134,8 +144,12 @@ let g:ale_linters = {
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
 
 
+" netrw configuration
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+
 " vimtex
-set grepprg=grep\ -nH\ $*
+set grepprg=grep\ -nH\ $* " don't know what for
 
 let g:tex_flavor='latex'
 
@@ -146,11 +160,6 @@ autocmd BufEnter *.tex set sw=2
 " key map
 inoremap jk <ESC>l
 
-
-inoremap <C-a> <backspace>
-
-inoremap <C-d> <Right><backspace>
-
 map <S-e> $
 
 let mapleader = "\<Space>"
@@ -159,9 +168,7 @@ imap xz <ESC>o
 
 imap zx <Up><ESC>o
 
-"map <CR> <S-v>
-
-vmap <silent> <expr> p <sid>Repl()
+vmap <silent> <expr> p <sid>Repl() " don't know how to use it
 
 " close buffer mapping
 nnoremap <Leader>bb :bd<CR>
@@ -171,6 +178,10 @@ nnoremap <Leader>zz :wq<CR>
 nnoremap <Leader>w :w<CR>
 
 nnoremap <Leader>pp :!python3 %<CR>
+
+" ctags
+nnoremap <silent> <Leader>tt :!ctags -R<CR>
+
 
 " buffer switch
 nnoremap <silent> [b :bprevious<CR> 
@@ -216,10 +227,6 @@ let g:ycm_show_diagnostics_ui = 0
 nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
 "let g:ycm_min_num_of_chars_for_completion=2
 
-
-" auto-pair
-let g:AutoPairsShortcutToggle = '<C-u>'
-let b:autopairs_enabled=0
 
 " haskell
 "let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
