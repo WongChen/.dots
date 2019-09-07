@@ -11,15 +11,15 @@ set hidden"}}}
 
 " -------{{{
 augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
+		autocmd!
+		autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
 
 augroup NrHighlight
-  autocmd!
-  autocmd WinEnter * hi LineNr ctermfg=247 guifg=#9e9e9e ctermbg=233 guibg=#121212
-  autocmd WinLeave * hi LineNr ctermfg=274 guifg=#e9e9e9 ctermbg=133 guibg=#212121
+		autocmd!
+		autocmd WinEnter * hi LineNr ctermfg=247 guifg=#9e9e9e ctermbg=233 guibg=#121212
+		autocmd WinLeave * hi LineNr ctermfg=274 guifg=#e9e9e9 ctermbg=133 guibg=#212121
 augroup END
 " -------}}}
 setlocal foldmethod=marker "{{{
@@ -68,9 +68,9 @@ hi Search ctermbg=LightYellow
 hi Search ctermfg=Red"}}}
 " colorscheme
 "if has("gui_running")
-	"set background=light
+"set background=light
 "else
-	"set background=dark
+"set background=dark
 "endif
 
 " file browsing
@@ -112,6 +112,9 @@ Plugin 'Shougo/vimproc'
 
 let g:airline#extensions#ale#enabled = 1
 
+
+let mapleader = "\<Space>"
+
 nnoremap <Leader>ht :GhcModType<cr>
 nnoremap <Leader>htc :GhcModTypeClear<cr>
 autocmd FileType haskell nnoremap <buffer> <leader>? :call ale#cursor#ShowCursorDetail()<cr>
@@ -121,7 +124,7 @@ nnoremap <Leader>hd <C-w>h<C-d><C-w>l
 nnoremap <Leader>ld <C-w>l<C-d><C-w>h
 nnoremap <Leader>jd <C-w>j<C-d><C-w>k
 nnoremap <Leader>kd <C-w>k<C-d><C-w>j
-                                    
+
 nnoremap <Leader>hb <C-w>h<C-d><C-w>l
 nnoremap <Leader>lb <C-w>l<C-d><C-w>h
 nnoremap <Leader>jb <C-w>j<C-d><C-w>k
@@ -131,16 +134,22 @@ nnoremap <Leader>kb <C-w>k<C-d><C-w>j
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 
+" key mapping for g++
+nnoremap <Leader>rr :!g++ -std=c++11 % -o %:r<CR>
+nnoremap <Leader>rg :!g++ -g -std=c++11 % -o %:r<CR>
+nnoremap <Leader>ter :packadd termdebug<CR>
+nnoremap <Leader>db :Termdebug %:r<CR>
+
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
-  \   'csh': ['shell'],
-  \   'zsh': ['shell'],
-  \   'go': ['gofmt', 'golint'],
-  \   'python': ['flake8', 'mypy', 'pylint'],
-  \   'c': ['gcc', 'cppcheck'],
-  \   'cpp': ['gcc', 'cppcheck'],
-  \   'text': [],
-  \}
+						\   'csh': ['shell'],
+						\   'zsh': ['shell'],
+						\   'go': ['gofmt', 'golint'],
+						\   'python': ['flake8', 'mypy', 'pylint'],
+						\   'c': ['gcc', 'cppcheck'],
+						\   'cpp': ['gcc', 'cppcheck'],
+						\   'text': [],
+						\}
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
 
 
@@ -162,7 +171,6 @@ inoremap jk <ESC>l
 
 map <S-e> $
 
-let mapleader = "\<Space>"
 
 imap xz <ESC>o
 
@@ -178,6 +186,7 @@ nnoremap <Leader>zz :wq<CR>
 nnoremap <Leader>w :w<CR>
 
 nnoremap <Leader>pp :!python3 %<CR>
+"nnoremap <Leader>pp :!g++ -std=c++11 % -o %:r<CR>
 
 " ctags
 nnoremap <silent> <Leader>tt :!ctags -R<CR>
