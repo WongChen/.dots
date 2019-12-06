@@ -1,5 +1,4 @@
-" basics
-set nocompatible"{{{
+set nocompatible" basics{{{
 
 filetype on
 
@@ -7,22 +6,9 @@ filetype plugin on
 
 filetype plugin indent on
 
-set hidden"}}}
+set hidden
 
-" -------{{{
-augroup filetype_vim
-		autocmd!
-		autocmd FileType vim setlocal foldmethod=marker
-augroup END
-
-
-augroup NrHighlight
-		autocmd!
-		autocmd WinEnter * hi LineNr ctermfg=247 guifg=#9e9e9e ctermbg=233 guibg=#121212
-		autocmd WinLeave * hi LineNr ctermfg=274 guifg=#e9e9e9 ctermbg=133 guibg=#212121
-augroup END
-" -------}}}
-setlocal foldmethod=marker "{{{
+setlocal foldmethod=marker 
 
 set autoindent
 
@@ -46,17 +32,9 @@ set dict+=/usr/share/dict/words " dictionary
 
 syntax enable
 
-filetype indent on
-
 syntax on
 
-au FileType python set cindent shiftwidth=4 " auto command for python
-
-au FileType cpp set cindent shiftwidth=4 " esc mapping
-
-au FileType python compiler pyunit
-au FileType python set makeprg=python3\ %
-
+filetype indent on
 
 set relativenumber
 
@@ -65,13 +43,7 @@ set ruler
 " search highlight colorschemes
 set hlsearch
 hi Search ctermbg=LightYellow
-hi Search ctermfg=Red"}}}
-" colorscheme
-"if has("gui_running")
-"set background=light
-"else
-"set background=dark
-"endif
+hi Search ctermfg=Red
 
 " file browsing
 set path+=**
@@ -79,7 +51,37 @@ set path+=**
 " display all matching files when we tab
 set wildmenu
 
+set iskeyword+=:
 
+" }}}
+
+" autocmd -------{{{
+augroup filetype_vim
+		autocmd!
+		autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+
+augroup NrHighlight
+		autocmd!
+		autocmd WinEnter * hi LineNr ctermfg=247 guifg=#9e9e9e ctermbg=233 guibg=#121212
+		autocmd WinLeave * hi LineNr ctermfg=274 guifg=#e9e9e9 ctermbg=133 guibg=#212121
+augroup END
+
+au FileType python set cindent shiftwidth=4 " auto command for python
+au FileType cpp set cindent shiftwidth=4 " esc mapping
+au FileType python compiler pyunit
+au FileType python set makeprg=python3\ %
+
+autocmd BufEnter *.tex set sw=2
+
+" unknown
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+" -------}}}
+
+" plugins {{{
 
 " bundle, vundle
 set rtp+=~/.vim/bundle/vundle/ " rtp => runtimepath
@@ -104,15 +106,58 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'tpope/vim-surround'
 
 
+" }}}
+" 
+" global setting for plugins {{{
+
 " haskell monica:   --> doesn't work somehow.
 Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'Shougo/vimproc'
 
+" ale
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+						\   'csh': ['shell'],
+						\   'zsh': ['shell'],
+						\   'go': ['gofmt', 'golint'],
+						\   'python': ['flake8', 'mypy', 'pylint'],
+						\   'c': ['gcc', 'cppcheck'],
+						\   'cpp': ['gcc', 'cppcheck'],
+						\   'text': [],
+						\}
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
+
+
+" netrw configuration
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+
+" vimtex
+set grepprg=grep\ -nH\ $* " don't know what for
+let g:tex_flavor='latex'
+
+" YouCompleteMe
+set runtimepath+=~/.vim/bundle/YouCompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1           
+let g:ycm_collect_identifiers_from_comments_and_strings = 1 
+let g:syntastic_ignore_files=[".*\.py$"]
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 0
+nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
+"let g:ycm_min_num_of_chars_for_completion=2
+"
+" airline
 let g:airline#extensions#ale#enabled = 1
 
-
+"}}}
+ 
+" map {{{
 let mapleader = "\<Space>"
 
 nnoremap <Leader>ht :GhcModType<cr>
@@ -139,38 +184,9 @@ nnoremap <Leader>rr :!g++ -std=c++11 % -o %:r<CR>
 nnoremap <Leader>rg :!g++ -g -std=c++11 % -o %:r<CR>
 nnoremap <Leader>ter :packadd termdebug<CR>
 nnoremap <Leader>db :Termdebug %:r<CR>
-
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-						\   'csh': ['shell'],
-						\   'zsh': ['shell'],
-						\   'go': ['gofmt', 'golint'],
-						\   'python': ['flake8', 'mypy', 'pylint'],
-						\   'c': ['gcc', 'cppcheck'],
-						\   'cpp': ['gcc', 'cppcheck'],
-						\   'text': [],
-						\}
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
-
-
-" netrw configuration
-let g:netrw_banner=0
-let g:netrw_liststyle=3
-
-" vimtex
-set grepprg=grep\ -nH\ $* " don't know what for
-
-let g:tex_flavor='latex'
-
-set iskeyword+=:
-
-autocmd BufEnter *.tex set sw=2
-
-" key map
 inoremap jk <ESC>l
 
 map <S-e> $
-
 
 imap xz <ESC>o
 
@@ -191,7 +207,6 @@ nnoremap <Leader>pp :!python3 %<CR>
 " ctags
 nnoremap <silent> <Leader>tt :!ctags -R<CR>
 
-
 " buffer switch
 nnoremap <silent> [b :bprevious<CR> 
 nnoremap <silent> ]b :bnext<CR> 
@@ -205,8 +220,9 @@ nnoremap ]t :tabn<CR>
 " screen switch
 nnoremap <silent> [p <C-t>p
 nnoremap <silent> ]p <C-t>n
+ " }}}
 
-" useful function
+" useful function{{{
 function! RestoreRegister()
 		let @" = s:restore_reg
 		return ''
@@ -216,32 +232,5 @@ function! s:Repl()
 		let s:restore_reg = @"
 		return "p@=RestoreRegister()<cr>"
 endfunction
+"}}}
 
-" unknown
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-
-" YouCompleteMe
-set runtimepath+=~/.vim/bundle/YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files = 1           
-let g:ycm_collect_identifiers_from_comments_and_strings = 1 
-let g:syntastic_ignore_files=[".*\.py$"]
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_complete_in_comments = 1
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
-nnoremap <c-j> :YcmCompleter GoToDefinitionElseDeclaration<CR>|
-"let g:ycm_min_num_of_chars_for_completion=2
-
-
-" haskell
-"let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
-"let g:haskell_enable_recursivedo = 1      " to enable highlighting of `mdo` and `rec`
-"let g:haskell_enable_arrowsyntax = 1      " to enable highlighting of `proc`
-"let g:haskell_enable_pattern_synonyms = 1 " to enable highlighting of `pattern`
-"let g:haskell_enable_typeroles = 1        " to enable highlighting of type roles
-"let g:haskell_enable_static_pointers = 1  " to enable highlighting of `static`
-"let g:haskell_backpack = 1                " to enable highlighting of backpack keywords
