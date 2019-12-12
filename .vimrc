@@ -217,9 +217,9 @@ nnoremap <silent> ]B :blast<CR>
 nnoremap [t :tabp<CR>
 nnoremap ]t :tabn<CR>
 
-" screen switch
-nnoremap <silent> [p <C-t>p
-nnoremap <silent> ]p <C-t>n
+" movement
+nnoremap <Leader>pd Lz<CR>  " page down
+
  " }}}
 
 " useful function{{{
