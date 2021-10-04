@@ -105,6 +105,11 @@ Bundle 'flazz/vim-colorschemes'
 
 Bundle 'tpope/vim-surround'
 
+Bundle 'preservim/tagbar'
+
+Bundle 'derekwyatt/vim-scala'
+
+Bundle 'kien/ctrlp.vim'
 
 " }}}
 " 
@@ -206,6 +211,7 @@ nnoremap <Leader>pp :!python3 %<CR>
 
 " ctags
 nnoremap <silent> <Leader>tt :!ctags -R<CR>
+nnoremap <Leader>tg :TagbarToggle<CR>
 
 " buffer switch
 nnoremap <silent> [b :bprevious<CR> 
@@ -233,4 +239,3 @@ function! s:Repl()
 		return "p@=RestoreRegister()<cr>"
 endfunction
 "}}}
-
