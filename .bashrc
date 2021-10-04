@@ -1,0 +1,6 @@
+export PS1="\[\e[01;32m\]\u@\h:\W$\[\e[00m\] "
+alias gs="git status"
+alias gc="git commit -m"
+alias gd="git diff"
+alias gl="git log"
+alias glc="git log --abbrev-commit"
