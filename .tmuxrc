@@ -1,0 +1,36 @@
+# vim airline doesn't work
+set-window-option -g utf8 on
+set -g default-terminal "screen-256color"
+
+# key mapping
+## prefix
+set -g prefix C-t
+unbind C-b
+bind C-t send-prefix
+
+## panel
+#unbind '"'
+#bind | splitw -v
+#unbind %
+#bind - splitw -h
+
+bind-key -T prefix v switch-client -T prefix_v
+bind-key -T prefix_v s splitw -h
+bind-key -T prefix s switch-client -T prefix_s
+bind-key -T prefix_s p splitw -v
+
+# mouse support
+#set-option -g mouse on
+#setw -g mouse on
+
+# panel switch using hjkl
+bind -r k select-pane -U
+bind -r j select-pane -D
+bind -r h select-pane -L
+bind -r l select-pane -R
+
+# panel size adjust using hjkl
+bind -r ^k resizep -U 5 # 绑定Ctrl+k为往↑调整面板边缘10个单元格
+bind -r ^j resizep -D 5 # 绑定Ctrl+j为往↓调整面板边缘10个单元格
+bind -r ^h resizep -L 10 # 绑定Ctrl+h为往←调整面板边缘10个单元格
+bind -r ^l resizep -R 10 # 绑定Ctrl+l为往→调整面板边缘10个单元格
